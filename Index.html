@@ -1,0 +1,807 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love 🌻</title>
+
+<style>
+:root {
+  --cream: #fff9e8;
+  --yellow: #ffdf79;
+  --gold: #e8b83f;
+  --brown: #65432c;
+  --green: #789566;
+  --light-green: #dce8c5;
+  --pink: #f3b9b0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: Georgia, serif;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+header {
+  padding: 18px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.screen {
+  display: none;
+  padding: 20px 16px 50px;
+  max-width: 850px;
+  margin: auto;
+  animation: fadeIn .6s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: clamp(43px, 10vw, 76px);
+  font-weight: normal;
+  line-height: 1;
+  margin: 15px 0;
+}
+
+h1 span {
+  color: #c3922c;
+  font-style: italic;
+}
+
+h2 {
+  font-size: clamp(30px, 7vw, 45px);
+  font-weight: normal;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.subtitle {
+  max-width: 500px;
+  margin: 20px auto;
+  font-size: 17px;
+}
+
+.kicker {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9b793c;
+}
+
+button.primary {
+  border: none;
+  border-radius: 50px;
+  padding: 15px 22px;
+  background: var(--brown);
+  color: white;
+  font-size: 14px;
+  margin: 6px;
+  transition: transform .2s;
+}
+
+button.primary:hover {
+  transform: translateY(-3px);
+}
+
+button.secondary {
+  background: #fffdf4;
+  color: var(--brown);
+  border: 1px solid #e6d29a;
+}
+
+.back {
+  display: block;
+  background: none;
+  border: none;
+  color: #8b6a3e;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* HOME MEADOW */
+
+.meadow {
+  height: 340px;
+  max-width: 650px;
+  margin: 25px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 45% 45% 20px 20px;
+  background: linear-gradient(
+    #fff1bf 0%,
+    #fff7d9 58%,
+    #c7d9a5 58%,
+    #a4bf83 100%
+  );
+  border: 1px solid #f0dfab;
+}
+
+.sun {
+  position: absolute;
+  right: 13%;
+  top: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ffda6c;
+  box-shadow: 0 0 30px #ffd96599;
+  animation: sunshine 4s infinite alternate;
+}
+
+@keyframes sunshine {
+  to { box-shadow: 0 0 55px #ffd965cc; }
+}
+
+.cloud {
+  position: absolute;
+  top: 55px;
+  left: 13%;
+  width: 75px;
+  height: 22px;
+  background: white;
+  border-radius: 30px;
+  opacity: .85;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 30px;
+  height: 30px;
+  top: -13px;
+  left: 12px;
+}
+
+.cloud::after {
+  width: 27px;
+  height: 27px;
+  top: -9px;
+  right: 10px;
+}
+
+.grass {
+  position: absolute;
+  bottom: 0;
+  height: 65px;
+  width: 100%;
+  background: #a4bf83;
+}
+
+.ground-flower {
+  position: absolute;
+  bottom: 24px;
+  font-size: 27px;
+  animation: sway 3s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+@keyframes sway {
+  to { transform: rotate(8deg); }
+}
+
+/* GIRAFFES */
+
+.giraffes {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  width: 95%;
+}
+
+.giraffe {
+  font-size: 115px;
+  cursor: pointer;
+  transform-origin: bottom;
+  filter: drop-shadow(0 5px 2px #6d603122);
+  transition: transform .3s;
+  animation: giraffeIdle 3s ease-in-out infinite;
+}
+
+.giraffe:nth-child(2) {
+  font-size: 90px;
+  animation-delay: -1.5s;
+}
+
+@keyframes giraffeIdle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg) translateY(-3px); }
+}
+
+.giraffe:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+#reaction {
+  font-size: 14px;
+  min-height: 24px;
+}
+
+/* REASONS */
+
+.progress-container {
+  max-width: 450px;
+  margin: 20px auto;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font: 12px Arial, sans-serif;
+  margin-bottom: 7px;
+}
+
+.progress {
+  height: 7px;
+  background: #eadbb0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #e4b83f;
+  transition: width .4s;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 750px;
+  margin: auto;
+}
+
+.reason-card {
+  background: #fffdf4;
+  border: 1px solid #eddda8;
+  border-radius: 18px;
+  min-height: 155px;
+  padding: 16px 12px;
+  color: var(--brown);
+  box-shadow: 0 4px 0 #ead9a6;
+  transition: transform .2s;
+}
+
+.reason-card:hover {
+  transform: translateY(-4px);
+}
+
+.reason-card .flower {
+  display: block;
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.reason-card strong {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.reason-card .description {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 12px;
+  animation: fadeIn .4s;
+}
+
+.reason-card.open {
+  background: #fff0b8;
+}
+
+.joke {
+  display: none;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 25px;
+  border: 1px dashed #d5af4d;
+  border-radius: 20px;
+  background: #fff7d8;
+  animation: fadeIn .6s;
+}
+
+.joke.show {
+  display: block;
+}
+
+.award {
+  font-size: 38px;
+}
+
+/* SECRET SURPRISE */
+
+.surprise-meadow {
+  max-width: 600px;
+  height: 320px;
+  margin: 25px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(
+    #fff2c6 0%,
+    #fff9e6 70%,
+    #c9d9a8 70%,
+    #a4bf83 100%
+  );
+  border: 1px solid #efdc9b;
+}
+
+.single-flower {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 85px;
+  cursor: pointer;
+  animation: flowerFloat 3s ease-in-out infinite;
+  transition: all .7s;
+}
+
+@keyframes flowerFloat {
+  50% { margin-bottom: 9px; }
+}
+
+.single-flower.bloomed {
+  opacity: .15;
+  transform: translateX(-50%) scale(.4);
+}
+
+.bouquet {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 55px;
+  line-height: 1.1;
+  width: 230px;
+  animation: bloom .9s ease;
+}
+
+.bouquet.show {
+  display: block;
+}
+
+@keyframes bloom {
+  from { opacity: 0; transform: translateX(-50%) scale(.1); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+.envelope {
+  display: none;
+  position: absolute;
+  right: 8%;
+  bottom: 20px;
+  font-size: 35px;
+  padding: 8px;
+  background: #fffdf4;
+  border: 1px solid #e6d29a;
+  border-radius: 12px;
+  animation: fadeIn .7s;
+}
+
+.envelope.show {
+  display: block;
+}
+
+.letter {
+  display: none;
+  max-width: 440px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 20px;
+  background: #fffdf4;
+  border: 1px solid #ead9a1;
+  font-size: 21px;
+  line-height: 1.7;
+  animation: fadeIn .6s;
+}
+
+.letter.show {
+  display: block;
+}
+
+.ending {
+  display: none;
+  margin: 25px auto;
+}
+
+.ending.show {
+  display: block;
+  animation: fadeIn .8s;
+}
+
+footer {
+  padding: 20px;
+  font-size: 12px;
+  color: #92764b;
+}
+
+@media (max-width: 600px) {
+  .meadow { height: 300px; }
+  .giraffe { font-size: 95px; }
+  .giraffe:nth-child(2) { font-size: 75px; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .reason-card { min-height: 145px; }
+  .reason-card.open { min-height: 220px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>✿ For My Love ✿</header>
+
+<!-- HOME SCREEN -->
+
+<section id="home" class="screen active">
+  <div class="kicker">A tiny world, just for you</div>
+
+  <h1>For <span>My Love</span> 🌼</h1>
+
+  <p class="subtitle">
+    A little meadow full of sunshine, soft things,
+    and all the reasons you mean so much to me.
+  </p>
+
+  <div class="meadow">
+    <div class="sun"></div>
+    <div class="cloud"></div>
+    <div class="grass"></div>
+
+    <span class="ground-flower" style="left:7%">🌼</span>
+    <span class="ground-flower" style="left:20%">🌷</span>
+    <span class="ground-flower" style="left:33%">🌻</span>
+    <span class="ground-flower" style="right:7%">🌼</span>
+    <span class="ground-flower" style="right:20%">🌷</span>
+    <span class="ground-flower" style="right:34%">🌸</span>
+
+    <div class="giraffes">
+      <div class="giraffe" onclick="giraffeReaction(0)" title="Tap me!">🦒</div>
+      <div class="giraffe" onclick="giraffeReaction(1)" title="Tap me too!">🦒</div>
+    </div>
+  </div>
+
+  <p id="reaction">Psst… tap a giraffe. They have something to say. 🦒</p>
+
+  <div>
+    <button class="primary" onclick="showScreen('reasons')">
+      🌻 Reasons I Love You
+    </button>
+
+    <button class="primary secondary" onclick="showScreen('surprise')">
+      🎁 Secret Surprise
+    </button>
+  </div>
+</section>
+
+<!-- REASONS SCREEN -->
+
+<section id="reasons" class="screen">
+  <button class="back" onclick="showScreen('home')">← Back to our meadow</button>
+
+  <div class="kicker">Little things, big feelings</div>
+  <h2>Reasons I Love You 🌻</h2>
+
+  <p class="subtitle">
+    Tap each sunflower to uncover a little reason.
+    There are 12 waiting for you.
+  </p>
+
+  <div class="progress-container">
+    <div class="progress-label">
+      <span>Sunflowers opened</span>
+      <span id="count">0 / 12</span>
+    </div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="joke" id="joke">
+    <div class="award">🍑🏆😭</div>
+
+    <p>I could write a hundred more reasons why I love you…</p>
+
+    <p>
+      But let's be honest, your personality is amazing,
+      your smile is adorable, and
+      <strong>that ass deserves its own appreciation award.</strong>
+    </p>
+
+    <p>What? I'm just being honest. 🤷‍♂️❤️</p>
+
+    <button class="primary" onclick="showScreen('home')">
+      Back to our meadow
+    </button>
+  </div>
+</section>
+
+<!-- SECRET SURPRISE SCREEN -->
+
+<section id="surprise" class="screen">
+  <button class="back" onclick="showScreen('home')">← Back to our meadow</button>
+
+  <div class="kicker">Something small, from my heart</div>
+  <h2>Secret Surprise 💛</h2>
+
+  <p class="subtitle">I picked this just for you…</p>
+
+  <div class="surprise-meadow">
+    <div class="sun"></div>
+    <div class="cloud"></div>
+
+    <div class="single-flower" id="singleFlower" onclick="bloomFlower()">
+      🌻
+    </div>
+
+    <div class="bouquet" id="bouquet">
+      🌻🌼<br>
+      🌼🌻🌼<br>
+      🌻🌼🌻
+    </div>
+
+    <button class="envelope" id="envelope" onclick="openLetter()">
+      💌
+    </button>
+  </div>
+
+  <p id="bloomHint">Tap the sunflower and see what happens. 🌱</p>
+
+  <div class="letter" id="letter">
+    <div style="font-size:35px">💌</div>
+    I love you so much, you mean the world to me
+    <div style="margin-top:12px">❤️🌻❤️</div>
+  </div>
+
+  <div class="ending" id="ending">
+    <div style="font-size:28px">🌼 🌸 🌻 🌼</div>
+
+    <p style="font-size:21px;max-width:450px;margin:20px auto">
+      No matter how big the world gets,
+      you'll always be my favourite place.
+    </p>
+
+    <button class="primary" onclick="showScreen('home')">
+      Back to our meadow 🌿
+    </button>
+  </div>
+</section>
+
+<footer>Made with a whole lot of love ✿</footer>
+
+<script>
+/* SCREEN NAVIGATION */
+
+function showScreen(screenId) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById(screenId).classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* GIRAFFE REACTIONS */
+
+const giraffeMessages = [
+  "The tall one says you're their favourite human. Honestly, same. 💛",
+  "The little one says you're cute. The tall one says: obviously. 🦒",
+  "Giraffe hug incoming… consider yourself hugged! 🤎"
+];
+
+let giraffeTaps = 0;
+
+function giraffeReaction(index) {
+  const giraffes = document.querySelectorAll(".giraffe");
+  const selected = giraffes[index];
+
+  selected.style.transform = "translateY(-15px) rotate(-8deg)";
+
+  setTimeout(() => {
+    selected.style.transform = "";
+  }, 400);
+
+  document.getElementById("reaction").textContent =
+    giraffeMessages[giraffeTaps % giraffeMessages.length];
+
+  giraffeTaps++;
+}
+
+/* REASONS I LOVE YOU */
+
+const reasons = [
+  {
+    title: "Your smile",
+    text: "Your smile has this unfair ability to make my day better, i just get lost when i see your smile."
+  },
+  {
+    title: "Your voice",
+    text: "I could listen to you talk about absolutely anything and somehow never get bored. You already know how much i like your voice but i can never hear it enough."
+  },
+  {
+    title: "Your kindness",
+    text: "The way you care about people says so much about the person you are. And i love you for it.You have such a big....... heart"
+  },
+  {
+    title: "Your laugh",
+    text: "I just love hearing you laugh. Whenever i hear it, all my worries seem to fade away"
+  },
+  {
+    title: "Your eyes",
+    text: "There is something about your eyes that makes me want to stop whatever I'm doing and just look at you."
+  },
+  {
+    title: "How you make me feel",
+    text: "You make me feel loved, comfortable, and understood in ways I don't always know how to explain."
+  },
+  {
+    title: "Your little quirks",
+    text: "All your little habits, and random ways of doing things make you even more special to me."
+  },
+  {
+    title: "Your softer side",
+    text: "I love the little moments when you let your guard down and show me the soft, adorable side of you."
+  },
+  {
+    title: "Who you are",
+    text: "I don't just love the way you make me feel. I admire the person you are, and I love getting to know you more."
+  },
+  {
+    title: "Our conversations",
+    text: "Whether we're talking about something important or absolute nonsense, I love talking to you."
+  },
+  {
+    title: "Your presence",
+    text: "You don't have to do anything extraordinary to make a moment special. Sometimes, just having you around is enough."
+  },
+  {
+    title: "Simply you",
+    text: "You don't have to be perfect, achieve anything, or prove anything to deserve my love. I love you for being you."
+  }
+];
+
+const cardsContainer = document.getElementById("cards");
+const openedCards = new Set();
+
+reasons.forEach((reason, index) => {
+  const card = document.createElement("button");
+
+  card.className = "reason-card";
+  card.innerHTML = `
+    <span class="flower">🌻</span>
+    <strong>${String(index + 1).padStart(2, "0")} · ${reason.title}</strong>
+    <span style="font-size:10px;margin-top:8px;opacity:.6">
+      TAP TO BLOOM
+    </span>
+  `;
+
+  card.addEventListener("click", () => {
+    if (openedCards.has(index)) return;
+
+    openedCards.add(index);
+    card.classList.add("open");
+
+    card.innerHTML = `
+      <span class="flower">🌻</span>
+      <strong>${reason.title}</strong>
+      <span class="description">${reason.text}</span>
+    `;
+
+    updateProgress();
+  });
+
+  cardsContainer.appendChild(card);
+});
+
+function updateProgress() {
+  const total = reasons.length;
+  const opened = openedCards.size;
+
+  document.getElementById("count").textContent =
+    `${opened} / ${total}`;
+
+  document.getElementById("progressBar").style.width =
+    `${(opened / total) * 100}%`;
+
+  if (opened === total) {
+    document.getElementById("joke").classList.add("show");
+
+    setTimeout(() => {
+      document.getElementById("joke").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 200);
+  }
+}
+
+/* SECRET SUNFLOWER */
+
+let flowerBloomed = false;
+let letterOpened = false;
+
+function bloomFlower() {
+  if (flowerBloomed) return;
+
+  flowerBloomed = true;
+
+  document.getElementById("singleFlower").classList.add("bloomed");
+
+  document.getElementById("bouquet").classList.add("show");
+
+  document.getElementById("envelope").classList.add("show");
+
+  document.getElementById("bloomHint").textContent =
+    "A little bouquet, just for you. Tap the envelope. 💌";
+}
+
+function openLetter() {
+  if (letterOpened) return;
+
+  letterOpened = true;
+
+  document.getElementById("letter").classList.add("show");
+
+  document.getElementById("ending").classList.add("show");
+
+  document.getElementById("bloomHint").textContent =
+    "A little reminder of how much you're loved. ❤️";
+
+  document.getElementById("letter").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+</script>
+
+</body>
+</html>
